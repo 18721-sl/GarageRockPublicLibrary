@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>GarageRockPublicLibrary</title>
+</head>
+<header> 
+    <div class="w3-panel w3-black">
+        <h1 style="color: burlywood ; font-size: 50px; ">
+            GarageRockPublicLibrary
+            <a href='static/information.html'><img src="{{url_for('static', filename='images/search icon.jpg')}}" width="80" height="80" style="float: right;">
+        </h1>
+    </div>
+</header>
+
+<aside> 
+    {% for item in Songs %}
+    <a href='static/{{item[3]}}'><img src='static/images/{{item[1]}}' height="322" width="322"></a>
+    {% endfor %}
+    <br>
+</aside>
+<aside>
+
+<p></P>
+
+
+</aside>
+<body>
+    
+    
+    <table style="width:80%">
+        <tr>
+            <th>Songs</th>
+            <th>Comment</th>
+            <th>Delete</th>
+        </tr>
+        {% for item in comments %}
+        <tr>
+            <td>{{item[1]}}</td>        
+            <td>{{item[2]}}</td>
+            
+            <td>
+                <form action="/delete" method="post">
+                    <input type="hidden" name="item_Song" value='{{item[0]}}'>
+                    <input type="submit" value="Delete" style="center">
+                </form>    
+            </td>
+        </tr>
+        {% endfor %}
+    <table>
+    <form action="/add" method="post">
+    <h2>Comment below</h2>
+    <input type="integer" name='item_Song'>
+    <input type="text" name='item_comment'>
+    <input type="submit" value="comment">
+    </form>
+</body>
+
+<p style= "font-size: 30px ;">More Bands and Albums Recommend<P>
+<a href="https://www.youtube.com/watch?v=QYh3mLKdfCw&list=PL425F8E2209AB6473"><P><b>Bloc party: Silent Alarm   (The drums and guitar play are quick and concise. "a nagging youthful urgency")<p></a>
+<a href="https://www.youtube.com/watch?v=RDuzszjrdcc&list=PLfUV806q_Ri7lM4r54KcxDqCYu8KnSSOz"<p><b>The White Stripes: Elephant   (Probalbly the most hit song of this genre "Seven nation army")<p></a>
+<a href="https://www.youtube.com/watch?v=xqYFU1_SiBo&list=PLUe_zjCZRPNJ7Da0SLMF3lFzJG34AU6xv"<p><b>Interpol: Turn on the Bright light   (This album summed up the feel of post-9/11, still-dust-ridden NYC through sound.)<p></a>
+<a href="https://www.youtube.com/watch?v=UUmMwIj3yZ4&list=OLAK5uy_kqKayhi4VDq4fcNpmLIdN19fdU1xPjsxA&index=1"<p><b>Franz Ferdinand: Franz Ferdinand  (Don't feel bad if they can't ever make a better album, this debut is absolutely so good)<p></a>
+
+</html>
